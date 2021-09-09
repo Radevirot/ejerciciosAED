@@ -36,30 +36,6 @@ void compacta(list<int> &L,list<int> &S){
 	}
 }
 	
-void compactaC(list<int> &L,list<int> &S){
-	
-	priority_queue<int> Q;
-	list<int>::iterator SitB=S.begin(),SitE=S.end(),LitB=L.begin();
-	int suma=0;
-	while(SitB!=SitE){
-		if((*SitB)>0){
-			for(int i=0;i<*SitB;i++) { 
-				suma+=(*LitB);
-				LitB = L.erase(LitB);
-				if (LitB==L.end()) break;
-			}
-			Q.push(suma);
-			suma=0;
-			if (LitB==L.end()) return;
-		}
-		
-		++SitB;
-	}
-	while(!Q.empty()){
-		L.insert(LitB,Q.top());
-		Q.pop();
-	}
-}
 
 int main(int argc, char *argv[]) {
 	
