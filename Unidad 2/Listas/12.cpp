@@ -1,21 +1,8 @@
 #include <iostream>
 #include <list>
 #include <queue>
+#include "./listcomp.cpp"
 using namespace std;
-
-list<int> generar_lista(int tam){
-	list<int> lista;
-	for(int i=0; i<tam; i++){
-		lista.push_back(rand()%10+1);
-	}
-	return lista;
-}
-	
-void mostrar_lista(list<int> &L){
-	cout << "[";
-	for( list<int>::iterator it=L.begin(); it!=--L.end(); ++it ) {cout << *it << ",";}
-	cout << *(--L.end()) << "]" << endl;
-}
 	
 void compacta(list<int> &L,list<int> &S){
 	list<int>::iterator SitB=S.begin(),SitE=S.end(),LitB=L.begin();
