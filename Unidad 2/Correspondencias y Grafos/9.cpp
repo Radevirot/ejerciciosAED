@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 #include <map>
 #include <list>
 #include <graphviz.hpp>
@@ -6,7 +7,7 @@
 using namespace std;
 typedef map<int,list<int>> graph;
 
-bool es_camino(graph G, list<int> &L){
+bool es_camino(graph G, list<int> &L){  //Reutilizo la función que verifica si son caminos
 	bool adyacente=false;
 	auto itL=L.begin();
 	
@@ -33,15 +34,46 @@ bool es_camino(graph G, list<int> &L){
 	return true;							//Si logra salir del ciclo luego de recorrer toda la lista de sucesión de vértices, significa que es un camino.
 }
 
+bool isHamilt(graph G, list<int> &L){
+	
+	
+	if (!es_camino(G,L)) return false;
+	if (L.size()!=G.size()) return false;
+	
+	auto itL=L.begin();
+	auto itL2=L.begin();
+	
+	while (itL!=--L.end()){
+		++itL2;
+		while (itL2!=L.end()){
+			if (*itL==*itL2) return false;
+			++itL2;
+		}
+		itL2 = ++itL;
+	}
+	
+	L.sort();
+	itL=L.begin();
+	auto itG = G.begin();
+	
+	while (itL!=L.end()){
+		if (*itL!=itG->first) return false;
+		++itL;
+		++itG;
+	}
+	
+	return true;
+	
+	
+}
 
 int main() {
 	
-	graph G={{1,{2,3}},{2,{}},{3,{4}},{4,{}}};
-	list<int> L={1,3,4};
+	graph G={{1,{2,3}},{2,{3,4}},{3,{2,4}},{4,{2}}};
+	list<int> L={1,3,4,2};
 	
 	
-	if (es_camino(G,L)) cout << "si"; else cout << "no";
-	
+	if (isHamilt(G,L)) cout << "si"; else cout << "no";
 	
 	return 0;
 }
