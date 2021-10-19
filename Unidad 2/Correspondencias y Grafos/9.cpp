@@ -31,7 +31,7 @@ bool es_camino(graph G, list<int> &L){  //Reutilizo la función que verifica si s
 		adyacente=false;					//Reseteo el valor de verdad del adyacente.
 	}
 	
-	return true;							//Si logra salir del ciclo luego de recorrer toda la lista de sucesión de vértices, significa que es un camino.
+	return true;			//Si logra salir del ciclo luego de recorrer toda la lista de sucesión de vértices, significa que es un camino.
 }
 
 bool isHamilt(graph G, list<int> &L){
