@@ -37,13 +37,13 @@ bool es_camino(graph G, list<int> &L){  //Reutilizo la función que verifica si s
 bool isHamilt(graph G, list<int> &L){
 	
 	
-	if (!es_camino(G,L)) return false;
-	if (L.size()!=G.size()) return false;
+	if (!es_camino(G,L)) return false;	//Si no es camino, no es camino hamiltoniano
+	if (L.size()!=G.size()) return false;	//Si la cantidad de vértices a recorrer no coincide con la del grafo, entonces no es camino hamiltoniano.
 	
 	auto itL=L.begin();
 	auto itL2=L.begin();
 	
-	while (itL!=--L.end()){
+	while (itL!=--L.end()){		//Si se repiten vértices dentro de la lista de vértices a recorrer, no es hamiltoniano
 		++itL2;
 		while (itL2!=L.end()){
 			if (*itL==*itL2) return false;
@@ -52,12 +52,12 @@ bool isHamilt(graph G, list<int> &L){
 		itL2 = ++itL;
 	}
 	
-	L.sort();
+	L.sort();	//Ordeno la lista de vértices para poder comparar con los del grafo
 	itL=L.begin();
 	auto itG = G.begin();
 	
-	while (itL!=L.end()){
-		if (*itL!=itG->first) return false;
+	while (itL!=L.end()){	
+		if (*itL!=itG->first) return false;	//Si en algún momento no coinciden los vértices de la lista con los del grafo, no es camino hamiltoniano.
 		++itL;
 		++itG;
 	}
