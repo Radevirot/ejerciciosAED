@@ -34,20 +34,20 @@ void ListarAOOPost(tree<int> &T, list<int> &L, node_t n){
 }
   
   
-  int main() {
-    
-    tree<int> T;
-    list<int> L;
-    
-    lisp2tree("(1 (2 (3 7 40 5 7 (3 1 2 4 90))) (4 (5 123 345)))",T);
-    
-    ListarAOOPost(T, L, T.begin());
-    
-    mostrar_lista(L);
-    
-    tree2dot(T,"arbol");
-    
-    
-    return 0;
-  }
+int main() {
+  
+  tree<int> T;
+  list<int> L;
+  
+  lisp2tree("(1 (2 (3 7 40 5 7 (3 1 2 4 90))) (4 (5 123 345)))",T);
+  
+  ListarAOOPost(T, L, T.begin());
+  
+  mostrar_lista(L);
+  
+  tree2dot(T,"arbol");
+  
+  
+  return 0;
+}
   
