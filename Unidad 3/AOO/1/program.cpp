@@ -24,6 +24,22 @@ void ListarAOOPre(tree<int> &T, list<int> &L, node_t n){
   
 }
   
+//void ListarAOOPre2(tree<int> &T, list<int> &L, node_t n){
+//  L.push_back(*n);
+//  auto c = n.lchild();
+//  if (c==T.end()){
+//    c=n;
+//    if (++c!=T.end())
+//    ListarAOOPre2(T, L, c);
+//  } else {
+//    ListarAOOPre2(T, L, c);
+//    ++c;
+//  }
+//  
+//  
+//}  
+
+  
 void ListarAOOPost(tree<int> &T, list<int> &L, node_t n){
   auto c = n.lchild();
   while(c!=T.end()){
@@ -39,7 +55,7 @@ int main() {
   tree<int> T;
   list<int> L;
   
-  lisp2tree("(1 (2 (3 7 40 5 7 (3 1 2 4 90))) (4 (5 123 345)))",T);
+  lisp2tree("(1 (2 (3 7 40 (5 2 2) 7 (3 1 2 4 90))) (4 (5 123 345)))",T);
   
   ListarAOOPost(T, L, T.begin());
   
