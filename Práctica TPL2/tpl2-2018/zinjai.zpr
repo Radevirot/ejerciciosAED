@@ -18,17 +18,12 @@ current_source=program.cpp
 path_char=\
 [source]
 path=program.cpp
-cursor=257:2
+cursor=115:23
 open=true
 [header]
 path=eval.hpp
-cursor=0:0
-[other]
-path=ao.json
-cursor=0:0
-[other]
-path=fo.json
-cursor=0:0
+cursor=132:1
+open=true
 [config]
 name=Debug
 toolchain=
@@ -43,13 +38,13 @@ temp_folder=Debug
 output_file=Debug/program.exe
 icon_file=
 manifest_file=
-compiling_extra=
+compiling_extra=-ffloat-store
 macros=_DEBUG
 warnings_level=1
 warnings_as_errors=0
 pedantic_errors=0
 std_c=
-std_cpp=c++11
+std_cpp=gnu++14
 debug_level=2
 optimization_level=0
 enable_lto=0
@@ -75,7 +70,7 @@ temp_folder=Release
 output_file=Release/program.exe
 icon_file=
 manifest_file=
-compiling_extra=-funroll-loops
+compiling_extra=-funroll-loops -ffloat-store
 macros=USECHRONO
 warnings_level=1
 warnings_as_errors=0
@@ -94,7 +89,7 @@ strip_executable=2
 console_program=1
 dont_generate_exe=0
 [inspections]
-expr=x
-expr=mvp
+expr=L
+expr=w
 [custom_tools]
 [end]

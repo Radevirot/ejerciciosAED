@@ -208,12 +208,84 @@ void BorrarImparesAOO(tree<int> &T, node_t n){ //Ejercicio G
 }
   
   
+void get_path(tree<int> &T,node_t q,int n,list<int> &L){
+  
+  if(q==T.end()){
+    return;
+  } else if(*q==n){
+    L.push_back(*q);
+    return;
+  } else {
+    
+    auto c=q.lchild();
+    
+    while(c!=T.end()){
+      get_path(T, c, n, L);
+      if(!L.empty()){
+        L.push_front(*q);
+        return;
+      }
+      ++c;
+    }
+  }
+  
+}
+  
+void get_leaves(tree<int> &T, node_t q, list<int> &L){
+
+  auto c=q.lchild();
+  
+  if(q==T.end()) return;
+  if (c==T.end()){
+    L.push_back(*q);
+  }
+  while (c!=T.end()){
+    get_leaves(T,c,L);
+    ++c;
+  }
+  
+}
+  
+void get_leaves(tree<int> &T, list<int> &L){
+  get_leaves(T,T.begin(),L);
+}
+  
+void get_path(tree<int> &T, int n, list<int> &L){
+  
+  get_path(T,T.begin(),n,L);
+  
+}
+  
+float prom_path(tree<int> &T) {
+  list<int> H;
+  float prom=0;
+  get_leaves(T,H);
+  mostrar_lista(H); cout << endl << endl;
+  auto itH=H.begin();
+  while (itH!=H.end()){
+    list<int> L;
+    get_path(T,*itH,L);
+    mostrar_lista(L); cout << "tamanio: ";
+    prom+=L.size();
+    cout << L.size() << endl;
+    ++itH;
+  }
+  cout << "tamanio H:" << H.size() << endl;
+  cout << "suma de tamanios: " << prom << endl;
+  prom=prom/H.size();
+  cout << "prom antes de restar: " << prom;
+  return --prom;
+  
+}
   
 int main() {
   
   tree<int> T;
+  list<int> L;
   
-//  lisp2tree("(4 (2 (9 4 2) 7) (5))",T);
+//  lisp2tree("(4 (2 (1 3 5) 7) (6))",T);
+  
+//  lisp2tree("(5 (1 8 (9 2)) (7 3))",T);
   
   lisp2tree("(8 (2 (10 7 40 (658 2 2) 7 (711 650 (2 651 (6 (7 6 9))) 4 90))) (4 (5 124 345)))",T);
   
@@ -221,8 +293,9 @@ int main() {
   
   
   
-  BorrarImparesAOO(T, T.begin());
+  cout << prom_path(T);
   
+  mostrar_lista(L);
   
   
   tree2dot(T,"arbol");

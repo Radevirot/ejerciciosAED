@@ -18,11 +18,12 @@ current_source=program.cpp
 path_char=\
 [source]
 path=program.cpp
-cursor=257:2
+cursor=77:17
 open=true
 [header]
 path=eval.hpp
 cursor=0:0
+open=true
 [other]
 path=ao.json
 cursor=0:0
