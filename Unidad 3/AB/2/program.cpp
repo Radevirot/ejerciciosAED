@@ -108,15 +108,15 @@ int main() {
 //  lisp2btree("(1 (2 3 (5 6 7)) (4 8 (9 10 11)))",TB);
 //  lisp2btree("(5 (5 5 (5 5 5)) (5 5 (5 5 5)))",TB);
   
-  lisp2btree("(1 (2 3 (5)) (0 4))",TA);
+  lisp2btree("(2 (3 (3 (9 . (9 9 (3 2 6))) .) .) 3)",TA);
 //  lisp2btree("(1 (0 2 4) (2 3 (5))",TB);
   
-  mirrorTree(TA, TB);
+//  mirrorTree(TA, TB);
   
 //  mostrar_lista(L);
   
   btree2dot(TA,"arbol");
-  btree2dot(TB,"arbol");
+//  btree2dot(TB,"arbol");
   
   return 0;
 }
